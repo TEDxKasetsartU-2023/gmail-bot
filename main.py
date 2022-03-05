@@ -81,6 +81,7 @@ def send_msg(service, user_id, message):
         return res
     except HttpError as error:
         print(f"Error\n\n{error}")
+        return None
 
 
 def get_msg_from_file(file):
@@ -121,8 +122,9 @@ if __name__ == "__main__":
         content = create_message_with_inline_image(
             email, "Some Header", r_msg, "TEDxKasetsartU_square.jpg"
         )
-        print(send_msg(service, "me", content))
+        res = send_msg(service, "me", content)
+        print(res)
         print()
         with open(RESULT_FILENAME, "at", encoding="utf-8") as file:
-            file.write(f"{name},{email},SENT,{create_timestamp()}\n")
+            file.write(f"{name},{email},{'SENT' if res is not None else 'NOT SENT'},{create_timestamp()}\n")
         time.sleep(0.5)
