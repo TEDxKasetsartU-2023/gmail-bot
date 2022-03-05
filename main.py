@@ -4,6 +4,7 @@ import base64
 import mimetypes
 import os
 import pickle
+import time
 
 from datetime import datetime
 from email.mime.image import MIMEImage
@@ -110,7 +111,7 @@ if __name__ == "__main__":
 
     service = create_service()
     sending_lst = from_csv_to_lst_of_dct(MAIL_LIST_FILENAME)
-
+    print(len(sending_lst))
     msg = get_msg_from_file("content.html")
     for r in sending_lst:
         name = r["name"]
@@ -124,3 +125,4 @@ if __name__ == "__main__":
         print()
         with open(RESULT_FILENAME, "at", encoding="utf-8") as file:
             file.write(f"{name},{email},SENT,{create_timestamp()}\n")
+        time.sleep(0.5)
