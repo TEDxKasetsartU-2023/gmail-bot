@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# python venv
+*env/
+
+# google api credentials
+credentials.json
+
+# google api tokens
+token.pickle
+
+# mail list file
+*.csv
