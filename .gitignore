@@ -139,3 +139,11 @@ token.pickle
 
 # mail list file
 *.csv
+
+# mail html file
+*.html
+
+# other files
+*.jpg
+*.jpeg
+*.pdf
